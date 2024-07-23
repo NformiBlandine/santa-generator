@@ -1,11 +1,3 @@
-FROM openjdk:8u151-jdk-alpine3.7
-  
-EXPOSE 8080
- 
-ENV APP_HOME /usr/src/app
+FROM tomcat:9.0.91-jre17-temurin-focal
 
-COPY target/secretsanta-0.0.1-SNAPSHOT.jar $APP_HOME/app.jar
-
-WORKDIR $APP_HOME
-
-ENTRYPOINT exec java -jar app.jar 
+COPY target/01-maven-web-app.war  ./tomcat/webapps/
